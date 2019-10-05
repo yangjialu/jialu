@@ -15,10 +15,10 @@ from pages.login import LoginPage
 from test_data.login_data import user_error, user_error_shouquan, user_success
 
 
-@pytest.mark.success
 @allure.feature("测试登录功能")
 class TestLogin(object):
 
+    @pytest.mark.success
     @allure.story("登录失败用例")
     @pytest.mark.parametrize("data", user_error)
     def test_login_error1(self, data, init_web):
@@ -34,6 +34,7 @@ class TestLogin(object):
         with allure.step("断言"):
             assert(data['expected'] == error.text)
 
+    @pytest.mark.success
     @allure.story("登录失败用例")
     @pytest.mark.parametrize("data", user_error_shouquan)
     def test_login_error2(self, data, init_web):
